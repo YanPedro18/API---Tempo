@@ -17,7 +17,7 @@ const weatherCont = document.querySelector("#Weather-data");
  //ele vai jogar o valor do input nessa função, a funçãoAPI vai requisitar os dados que o usuario pediu, e vai retornar isso no meu jsonData(variavel jsonAPI) objeto final.
 async function getAgua (cidade) {
  //requisitei a API, ela me retornou a resposta,json, aonde posso fazer as requisições
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${cidade}&units=metric&appid=${apiKey}&lang=pt_br`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&units=metric&appid=${apiKey}&lang=pt_br`;
 
     const response = await fetch(url);
     const jsonData = await response.json();
@@ -34,7 +34,7 @@ async function climashow(cidade = "Belo Horizonte") {
     descElement.insertAdjacentHTML("beforeend", `${jsonData.weather[0].description}`);
 
     //aqui estou setando o atributo SRC na imagem, usando ${}.png, para a API trazer deste link as imagens
-    weatherIconEl.setAttribute("src", `http://openweathermap.org/img/wn/${jsonData.weather[0].icon}.png`);
+    weatherIconEl.setAttribute("src", `https://openweathermap.org/img/wn/${jsonData.weather[0].icon}.png`);
     countryElement.setAttribute("src", apiCountryURL + jsonData.sys.country);
     umidadeElement.insertAdjacentHTML("beforeend", `${jsonData.main.humidity}%`);
     windElement.insertAdjacentHTML("beforeend", `${jsonData.wind.speed}km/h`);
