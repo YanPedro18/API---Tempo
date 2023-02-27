@@ -1,218 +1,234 @@
 * {
-    box-sizing: border-box;
-    margin: 0%;
-    padding: 0%;
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
 }
 
 body {
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(to right, #434343 0%, black 100%);
-    display: grid;
-    place-items: center;
-    margin: 0 auto;
-    color: #fdfdfd;
-    
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(to right, #434343 0%, black 100%);
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+  color: #fdfdfd;
+  
 }
 
 main {
-    display: grid;
-    place-content: center;
-    width: 100%;
-    margin: 0 auto;
-    height: 100%;
-    text-align: center;
-  }
+  display: grid;
+  place-content: center;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  text-align: center;
+}
 
-  #city,
-  #weather {
-    font-size: 3.0rem;
-    transform: translateY(10rem);
-  }
+#city,
+#weather {
+  font-size: 3.0rem;
+  transform: translateY(10rem);
+}
 .form {
-    --input-text-color: white;
-    --input-bg-color: #252525;
-    --focus-input-bg-color: transparent;
-    --text-color: white;
-    --active-color: #eb3535;
-    --width-of-input: 200px;
-    --inline-padding-of-input: 1.2em;
-    --gap: 0.9rem;
-    position: relative;
-    bottom: -20em;
-  }
+  --input-text-color: white;
+  --input-bg-color: #252525;
+  --focus-input-bg-color: transparent;
+  --text-color: white;
+  --active-color: #eb3535;
+  --width-of-input: 300px;
+  --inline-padding-of-input: 1.2em;
+  --gap: 0.9rem;
+  position: relative;
+  bottom: -20em;
+}
 
-  .form {
-    font-size: 0.9rem;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    width: var(--width-of-input);
-    position: relative;
-    isolation: isolate;
-  }
+.form {
+  font-size: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: var(--width-of-input);
+  position: relative;
+  isolation: isolate;
+}
 
-  .fancy-bg {
-    position: absolute;
-    width: 100%;
-    inset: 0;
-    background: var(--input-bg-color);
-    border-radius: 30px;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  }
+.fancy-bg {
+  position: absolute;
+  width: 100%;
+  inset: 0;
+  background: var(--input-bg-color);
+  border-radius: 30px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
 
-  label {
-    width: 100%;
-    padding: 0.8em;
-    height: 40px;
-    padding-inline: var(--inline-padding-of-input);
-    display: flex;
-    align-items: center;
-  }
+label {
+  width: 100%;
+  padding: 0.8em;
+  height: 40px;
+  padding-inline: var(--inline-padding-of-input);
+  display: flex;
+  align-items: center;
+}
+
+.search,.close-btn {
+  position: absolute;
+}
+
+.search {
+  fill: var(--text-color);
+  left: var(--inline-padding-of-input);
+}
+
+svg {
+  width: 17px;
+  display: block;
+}
+
+.close-btn {
+  border: none;
+  right: var(--inline-padding-of-input);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 0.1em;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--active-color);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.input {
+  color: var(--input-text-color);
+  width: 100%;
+  margin-inline: min(2em,calc(var(--inline-padding-of-input) + var(--gap)));
+  background: none;
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-color)
+}
+
+.input:focus ~ .fancy-bg {
+  border: 1px solid var(--active-color);
+  background: var(--focus-input-bg-color);
+}
+
+.input:focus ~ .search {
+  fill: var(--active-color);
+}
+
+.input:valid ~ .close-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
+}
+
+#Weather-data {
+  background-color: #252525;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 30px;
+  color: white;
+  border-top: #eb3535 2px solid;
+  border-radius: 5px;
+  display: grid;
+  margin: 0 auto;
+  justify-content: center;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  bottom: -20rem;
+  width: 123%;
+}
+
+.hide {
+  display: none !important;
+}
+.form > .buttons {
   
-  .search,.close-btn {
-    position: absolute;
-  }
-
-  .search {
-    fill: var(--text-color);
-    left: var(--inline-padding-of-input);
-  }
-
-  svg {
-    width: 17px;
-    display: block;
-  }
-
-  .close-btn {
-    border: none;
-    right: var(--inline-padding-of-input);
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 0.1em;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--active-color);
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .input {
-    color: var(--input-text-color);
-    width: 100%;
-    margin-inline: min(2em,calc(var(--inline-padding-of-input) + var(--gap)));
-    background: none;
-    border: none;
-  }
-  
-  .input:focus {
-    outline: none;
-  }
-  
-  .input::placeholder {
-    color: var(--text-color)
-  }
-
-  .input:focus ~ .fancy-bg {
-    border: 1px solid var(--active-color);
-    background: var(--focus-input-bg-color);
-  }
-
-  .input:focus ~ .search {
-    fill: var(--active-color);
-  }
-
-  .input:valid ~ .close-btn {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
-    -webkit-transition-delay: 9999s;
-  }
-
-  #Weather-data {
-    background-color: #252525;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 30px;
-    color: white;
-    border-top: #eb3535 2px solid;
-    border-radius: 5px;
-    display: grid;
-    margin: 0 auto;
-    justify-content: center;
-    place-items: center;
-    text-align: center;
-    position: relative;
-    bottom: -20rem;
-    width: 100%;
-  }
-
-  .hide {
-    display: none !important;
-  }
-  .form > .buttons {
-    
-    transform: translateX(130%);
-  }
-  .buttons {
-    background-color: #252525;
-    outline: none;
-    text-decoration: none;
-    border: 0;
-    border-radius: 7px;
-    padding: 0.6rem;
-    color: white;
-    cursor: pointer;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1) all 2s;
-  }
-  .buttons:hover {
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1) all 2s;
-    box-shadow:#eb3535 0px 1px 20px;
-  }
-  #description-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.6rem 0;
-  }
-  #descricao {
-    font-weight: bold;
-    text-transform: capitalize;
-  }
-  #details-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  transform: translateX(130%);
+}
+.buttons {
+  background-color: #252525;
+  outline: none;
+  text-decoration: none;
+  border: 0;
+  border-radius: 7px;
+  padding: 0.6rem;
+  color: white;
+  cursor: pointer;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) all 2s;
+}
+.buttons:hover {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) all 2s;
+  box-shadow:#eb3535 0px 1px 20px;
+}
+#description-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.6rem 0;
+}
+#descricao {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+#details-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /*👉  GAMBIARRA PARA COLOCAR BORDA UMA DO LADO DA OUTRA👈*/
-  #details-container #umidade {
-   border-right: 2px solid white;
-   margin: .6rem;
-   padding: .6rem;
-  }
-  #country {
-    height: 30px;
-  }
+#details-container #umidade {
+ border-right: 2px solid white;
+ margin: .6rem;
+ padding: .6rem;
+}
+#country {
+  height: 30px;
+}
 
- span > img {
- filter: invert(1);
+span > img {
+filter: invert(1);
 }
 
 @media screen and (max-width: 435px) {
-  #city {
-    margin: 0 auto;
-    text-align: center;
-  }
+#city {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form > .buttons {
+  transform: translateX(0%);
+}
+.buttons {
+  border-radius: 52px;
+}
+#city  {
+  font-size: 2.4rem;
+}
+.form {
+  width: 290px;
+}
+#Weather-data {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
 }
 
